@@ -25,11 +25,15 @@ class DoublyLinkedList(value: Any) {
 	}
 
 	fun insert(index: Int, value: Any) {
-		var leaderNode = getLeaderNode(index)
-		val newNode = DoublyLinkedNode(value, leaderNode, leaderNode.next)
-		leaderNode.next?.setLastNode(newNode)
-		leaderNode.setNextNode(newNode)
-		incrementLength()
+		if (index == 0) {
+			prepend(value)
+		} else {
+			val leaderNode = getLeaderNode(index)
+			val newNode = DoublyLinkedNode(value, leaderNode, leaderNode.next)
+			leaderNode.next?.setLastNode(newNode)
+			leaderNode.setNextNode(newNode)
+			incrementLength()
+		}
 	}
 
 	private fun getLeaderNode(index: Int): DoublyLinkedNode {

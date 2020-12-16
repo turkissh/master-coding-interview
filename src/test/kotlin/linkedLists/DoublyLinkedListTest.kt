@@ -11,7 +11,7 @@ class DoublyLinkedListTest {
 
 		val values = customLinkedList.returnAll()
 
-		assertThat(values).containsExactlyInAnyOrder(5)
+		assertThat(values).containsExactly(5)
 	}
 
 	@Test
@@ -21,7 +21,7 @@ class DoublyLinkedListTest {
 		customLinkedList.append(20)
 
 		val values = customLinkedList.returnAll()
-		assertThat(values).containsExactlyInAnyOrder(5, 20)
+		assertThat(values).containsExactly(5, 20)
 		assertThat(customLinkedList.length()).isEqualTo(2)
 	}
 
@@ -33,7 +33,7 @@ class DoublyLinkedListTest {
 		customLinkedList.append(55)
 
 		val values = customLinkedList.returnAll()
-		assertThat(values).containsExactlyInAnyOrder(5, 20, 55)
+		assertThat(values).containsExactly(5, 20, 55)
 		assertThat(customLinkedList.length()).isEqualTo(3)
 	}
 
@@ -44,7 +44,7 @@ class DoublyLinkedListTest {
 		customLinkedList.prepend(20)
 
 		val values = customLinkedList.returnAll()
-		assertThat(values).containsExactlyInAnyOrder(20,5)
+		assertThat(values).containsExactly(20,5)
 		assertThat(customLinkedList.length()).isEqualTo(2)
 	}
 
@@ -56,7 +56,7 @@ class DoublyLinkedListTest {
 		customLinkedList.prepend(65)
 
 		val values = customLinkedList.returnAll()
-		assertThat(values).containsExactlyInAnyOrder(65,20,5)
+		assertThat(values).containsExactly(65,20,5)
 		assertThat(customLinkedList.length()).isEqualTo(3)
 	}
 
@@ -69,7 +69,7 @@ class DoublyLinkedListTest {
 		customLinkedList.insert(1, 30)
 
 		val values = customLinkedList.returnAll()
-		assertThat(values).containsExactlyInAnyOrder(65,30,20,5)
+		assertThat(values).containsExactly(65,30,20,5)
 		assertThat(customLinkedList.length()).isEqualTo(4)
 	}
 
@@ -82,7 +82,7 @@ class DoublyLinkedListTest {
 		customLinkedList.insert(0, 30)
 
 		val values = customLinkedList.returnAll()
-		assertThat(values).containsExactlyInAnyOrder(30,65,20,5)
+		assertThat(values).containsExactly(30,65,20,5)
 		assertThat(customLinkedList.length()).isEqualTo(4)
 	}
 
@@ -93,7 +93,7 @@ class DoublyLinkedListTest {
 		customLinkedList.insert(5, 30)
 
 		val values = customLinkedList.returnAll()
-		assertThat(values).containsExactlyInAnyOrder(5,30)
+		assertThat(values).containsExactly(5,30)
 		assertThat(customLinkedList.length()).isEqualTo(2)
 	}
 
@@ -106,7 +106,7 @@ class DoublyLinkedListTest {
 		customLinkedList.remove(1)
 
 		val values = customLinkedList.returnAll()
-		assertThat(values).containsExactlyInAnyOrder(65,5)
+		assertThat(values).containsExactly(65,5)
 		assertThat(customLinkedList.length()).isEqualTo(2)
 	}
 
@@ -119,7 +119,7 @@ class DoublyLinkedListTest {
 		customLinkedList.remove(2)
 
 		val values = customLinkedList.returnAll()
-		assertThat(values).containsExactlyInAnyOrder(65,20)
+		assertThat(values).containsExactly(65,20)
 		assertThat(customLinkedList.length()).isEqualTo(2)
 	}
 
@@ -132,7 +132,7 @@ class DoublyLinkedListTest {
 		customLinkedList.remove(6)
 
 		val values = customLinkedList.returnAll()
-		assertThat(values).containsExactlyInAnyOrder(65,20,5)
+		assertThat(values).containsExactly(65,20,5)
 		assertThat(customLinkedList.length()).isEqualTo(3)
 	}
 }

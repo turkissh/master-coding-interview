@@ -24,11 +24,14 @@ class CustomLinkedList(value: Any) {
 	}
 
 	fun insert(index: Int, value: Any) {
-		var leaderNode = getLeaderNode(index)
-
-		val newNode = Node(value, leaderNode.next)
-		leaderNode.setNextNode(newNode)
-		incrementLength()
+		if (index == 0) {
+			prepend(value)
+		} else {
+			val leaderNode = getLeaderNode(index)
+			val newNode = Node(value, leaderNode.next)
+			leaderNode.setNextNode(newNode)
+			incrementLength()
+		}
 	}
 
 	private fun getLeaderNode(index: Int): Node {
@@ -49,6 +52,32 @@ class CustomLinkedList(value: Any) {
 
 		decrementLength()
 	}
+
+	fun reverse() {
+		/*val reversedLinkedList = CustomLinkedList(head.value)
+		var node: Node? = this.head.next
+		while (node != null) {
+			reversedLinkedList.prepend(node.value)
+			node = node.next
+		}
+		this.head = reversedLinkedList.head
+		this.tail = reversedLinkedList.tail
+		this.length = reversedLinkedList.length*/
+
+		var prev: Node? = null
+		var current: Node? = head
+		var next: Node? = head.next
+		this.tail = head
+
+		while (next != null) {
+			next = current?.next
+			current?.setNextNode(prev)
+			prev = current
+			current = next
+		}
+
+		this.head = prev!!
+	} //https://www.youtube.com/watch?v=O0By4Zq0OFc
 
 	fun returnAll(): List<Any> {
 		val list = mutableListOf<Any>()
