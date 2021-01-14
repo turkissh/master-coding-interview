@@ -1,4 +1,6 @@
-package stacksAndQueues
+package stacksAndQueues.stack
+
+import stacksAndQueues.Node
 
 class ListStack : Stack {
 	var top: Node? = null
@@ -46,8 +48,3 @@ class ListStack : Stack {
 	}
 }
 
-class Node(val value: Any, var next: Node? = null) {
-	fun setNextNode(node: Node?) {
-		this.next = node
-	}
-}

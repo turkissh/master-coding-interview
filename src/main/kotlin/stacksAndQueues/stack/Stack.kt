@@ -1,4 +1,4 @@
-package stacksAndQueues
+package stacksAndQueues.stack
 
 interface Stack {
 	fun peek(): Any?

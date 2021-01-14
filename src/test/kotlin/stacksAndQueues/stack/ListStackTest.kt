@@ -1,7 +1,8 @@
-package stacksAndQueues
+package stacksAndQueues.stack
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
+import stacksAndQueues.stack.ListStack
 
 class ListStackTest {
 
@@ -21,7 +22,7 @@ class ListStackTest {
 		assertThat(value3).isEqualTo("google")
 
 		assertThat(stack.length).isEqualTo(0)
-		assertThat(stack.isEmpty()).isTrue()
+		assertThat(stack.isEmpty()).isTrue
 	}
 
 	@Test

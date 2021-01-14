@@ -1,4 +1,4 @@
-package stacksAndQueues
+package stacksAndQueues.stack
 
 import kotlin.math.max
 
