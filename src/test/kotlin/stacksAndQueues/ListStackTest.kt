@@ -3,11 +3,11 @@ package stacksAndQueues
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
-class StackTest {
+class ListStackTest {
 
 	@Test
 	fun `push values`() {
-		val stack = Stack()
+		val stack = ListStack()
 
 		stack.push("google")
 		stack.push("udemy")
@@ -26,7 +26,7 @@ class StackTest {
 
 	@Test
 	fun `peek value`() {
-		val stack = Stack()
+		val stack = ListStack()
 		stack.push("google")
 		stack.push("udemy")
 		stack.push("facebook")
@@ -39,7 +39,7 @@ class StackTest {
 
 	@Test
 	fun `pop empty stack`() {
-		val stack = Stack()
+		val stack = ListStack()
 
 		val emptyValue = stack.pop()
 
