@@ -1,15 +1,13 @@
-package stacksAndQueues.queue
-
+package stacksAndQueues
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
-import stacksAndQueues.stack.ListStack
 
-class ListQueueTest {
+class QueueWithStacksTest {
 
 	@Test
 	fun `push values`() {
-		val queue = ListQueue()
+		val queue = QueueWithStacks()
 
 		queue.enqueue("google")
 		queue.enqueue("udemy")
@@ -28,7 +26,7 @@ class ListQueueTest {
 
 	@Test
 	fun `peek value`() {
-		val queue = ListQueue()
+		val queue = QueueWithStacks()
 		queue.enqueue("google")
 		queue.enqueue("udemy")
 		queue.enqueue("facebook")
@@ -41,10 +39,11 @@ class ListQueueTest {
 
 	@Test
 	fun `pop empty stack`() {
-		val queue = ListQueue()
+		val queue = QueueWithStacks()
 
 		val emptyValue = queue.dequeue()
 
 		assertThat(emptyValue).isNull()
 	}
+
 }

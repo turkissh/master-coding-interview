@@ -1,6 +1,7 @@
 package stacksAndQueues.queue
 
 import stacksAndQueues.Node
+import kotlin.math.max
 
 class ListQueue : Queue {
 
@@ -47,6 +48,6 @@ class ListQueue : Queue {
 	}
 
 	private fun decrementLength() {
-		length--
+		length = max(length - 1, 0)
 	}
 }
