@@ -7,7 +7,7 @@ class BinarySearchTree {
 		if (root == null) {
 			root = Node(value)
 		} else {
-			searchForHeadingNode(value)?.let {
+			searchNodeForInsert(value)?.let {
 				if (it.value > value) {
 					it.leftChild = Node(value)
 				} else {
@@ -18,26 +18,75 @@ class BinarySearchTree {
 	}
 
 	fun lookup(value: Int): Node? {
-		if (root?.value == value) {
+		if (root?.value == value || root == null) {
 			return root
 		}
-		searchForHeadingNode(value)?.let {
-			return when {
-				it.value == value -> it
-				it.value > value -> it.rightChild
-				it.value < value -> it.leftChild
-				else -> null
+		var parentFromValue: Node? = null
+		var heading = root
+		while (parentFromValue == null) {
+			if (heading!!.leftValue() == value || heading!!.rightValue() == value) {
+				parentFromValue = heading
+			} else {
+				heading = if (heading.value > value) {
+					if (heading.leftChild == null) return null
+					heading.leftChild
+				} else {
+					if (heading.rightChild == null) return null
+					heading.rightChild
+				}
 			}
 		}
 
-		return null
+		parentFromValue.let {
+			return when {
+				it.value == value -> it
+				it.value < value -> it.rightChild
+				it.value > value -> it.leftChild
+				else -> null
+			}
+		}
 	}
 
-	private fun searchForHeadingNode(value: Int): Node? {
+	fun remove(value: Int) {
+		if (root?.value == value || root == null) {
+			root = null
+		} else {
+			var parentFromValue: Node? = null
+			var heading = root
+			while (parentFromValue == null) {
+				if (heading!!.leftValue() == value || heading!!.rightValue() == value) {
+					parentFromValue = heading
+				} else {
+					heading = if (heading.value > value) {
+						heading.leftChild
+					} else {
+						heading.rightChild
+					}
+				}
+			}
+
+			val valueToRemove = if (parentFromValue.leftValue() == value) {
+				parentFromValue.leftChild!!
+			} else {
+				parentFromValue.rightChild!!
+			}
+
+			var valueToReplace: Node
+			if(valueToRemove.rightChild != null) {
+				//
+			} else if ( valueToRemove.leftChild != null) {
+				//
+			} else {
+
+			}
+		}
+	}
+
+	private fun searchNodeForInsert(value: Int): Node? {
 		var headerNode: Node? = null
 		var pointerNode = root
-		while (headerNode == null) {
-			if (pointerNode!!.value == value) return pointerNode
+		while (headerNode == null && pointerNode != null) {
+			if (pointerNode?.value == value) return pointerNode
 
 			if (pointerNode.value > value) {
 				if (pointerNode.leftChild == null) {

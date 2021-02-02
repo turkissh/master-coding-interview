@@ -1,6 +1,7 @@
+package tree
+
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import tree.BinarySearchTree
 
 class BinarySearchTreeTest {
 
@@ -86,5 +87,65 @@ class BinarySearchTreeTest {
 		val traversedTree = bts.traverse()
 
 		assertThat(traversedTree).containsExactly(1,4,6,9,15,20,170)
+	}
+
+	@Test
+	internal fun `remove root`() {
+		val bts = BinarySearchTree()
+		bts.insert(9)
+
+		bts.remove(9)
+
+		val deletedValue = bts.lookup(9)
+		assertThat(deletedValue).isNull()
+		assertThat(bts.traverse()).isEmpty()
+	}
+
+	@Test
+	internal fun `remove first leaf`() {
+		val bts = BinarySearchTree()
+		bts.insert(9)
+		bts.insert(6)
+		bts.insert(20)
+
+		bts.remove(6)
+
+		val root = bts.lookup(9)
+		assertThat(root!!.leftChild).isNull()
+		assertThat(root!!.rightChild!!.value).isEqualTo(20)
+		assertThat(bts.traverse()).containsExactly(9,20)
+	}
+
+	@Test
+	internal fun `remove last leaf`() {
+		val bts = BinarySearchTree()
+		bts.insert(9)
+		bts.insert(4)
+		bts.insert(6)
+		bts.insert(20)
+		bts.insert(170)
+		bts.insert(15)
+		bts.insert(1)
+
+		bts.remove(170)
+
+		assertThat(bts.lookup(170)).isNull()
+		assertThat(bts.traverse()).containsExactly(1,4,6,9,15,20)
+	}
+
+	@Test
+	internal fun `remove mid node`() {
+		val bts = BinarySearchTree()
+		bts.insert(9)
+		bts.insert(6)
+		bts.insert(20)
+		bts.insert(10)
+		bts.insert(150)
+		bts.insert(70)
+
+		bts.remove(20)
+
+		assertThat(bts.lookup(20)).isNull()
+		assertThat(bts.traverse()).containsExactly(6,9,10,70,150)
 	}
 }
