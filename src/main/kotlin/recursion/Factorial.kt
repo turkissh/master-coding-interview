@@ -6,12 +6,12 @@ class Factorial {
 	// One should use recursive, the other should just use a for loop
 	// 5! = 5*4*3*2*1
 
-	fun findFactorialRecursive(num: Int): Int {
+	fun findFactorialRecursive(num: Int): Int { //O(N)
 		if (num == 1) return 1
 		return num * findFactorialRecursive(num - 1)
 	}
 
-	fun findFactorialIterative(num: Int): Int {
+	fun findFactorialIterative(num: Int): Int { //O(N)
 		//code here
 		var result = 1
 		for (i in 1..num) {
