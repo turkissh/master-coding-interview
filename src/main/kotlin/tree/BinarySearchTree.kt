@@ -1,7 +1,7 @@
 package tree
 
-class BinarySearchTree {
-	private var root: Node? = null
+open class BinarySearchTree {
+	var root: Node? = null
 
 	fun insert(value: Int) {
 		if (root == null) {
